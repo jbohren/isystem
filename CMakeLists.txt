@@ -5,4 +5,6 @@ include_directories(SYSTEM /path/to/overlay/devel/include)
 add_executable(foo foo.cpp)
 
 # Yields:
-# /usr/bin/c++    -isystem /path/to/overlay/devel/include     -I/opt/ros/indigo/include    -o CMakeFiles/foo.dir/foo.cpp.o -c /home/jbohren/scratch/isystem/foo.cpp
+# /usr/bin/c++  -isystem /path/to/overlay/devel/include  -I/opt/ros/indigo/include  -o CMakeFiles/foo.dir/foo.cpp.o -c /home/jbohren/scratch/isystem/foo.cpp
+# Expected:
+# /usr/bin/c++  -isystem /path/to/overlay/devel/include  -I/path/to/overlay/devel/include  -I/opt/ros/indigo/include  -o CMakeFiles/foo.dir/foo.cpp.o -c /home/jbohren/scratch/isystem/foo.cpp
