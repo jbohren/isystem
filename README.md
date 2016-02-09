@@ -4,4 +4,4 @@ Should this be the correct behavior? [According to GCC](https://gcc.gnu.org/onli
 
 > All directories named by -isystem are searched after all directories named by -I, no matter what their order was on the command line. If the same directory is named by both -I and -isystem, the -I option is ignored. GCC provides an informative message when this occurs if -v is used.
 
-With CMake, if both are specified, if fails silently. Should CMake be dropping one of the options at all?
+With CMake, if both are specified, it drops the non-SYSTEM include and fails silently. Should CMake be dropping one of the options at all?
