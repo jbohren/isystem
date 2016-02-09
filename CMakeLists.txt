@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.8)
+project(foo)
+include_directories(/opt/ros/indigo/include)
+include_directories(SYSTEM /opt/ros/indigo/include)
+add_executable(foo foo.cpp)
