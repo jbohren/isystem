@@ -5,3 +5,15 @@ Should this be the correct behavior? [According to GCC](https://gcc.gnu.org/onli
 > All directories named by -isystem are searched after all directories named by -I, no matter what their order was on the command line. If the same directory is named by both -I and -isystem, the -I option is ignored. GCC provides an informative message when this occurs if -v is used.
 
 With CMake, if both are specified, it drops the non-SYSTEM include and fails silently. Should CMake be dropping one of the options at all?
+
+For example, when building this project with any recent version of CMake on Linux, the build command is:
+
+```bash
+/usr/bin/c++  -isystem /path/to/overlay/devel/include  -I/opt/ros/indigo/include  -o CMakeFiles/foo.dir/foo.cpp.o -c /home/jbohren/scratch/isystem/foo.cpp
+```
+
+But with the three `incude_directory` options given in `CMakeLists.txt`, I would expect it to read:
+
+```bash
+/usr/bin/c++  -I/path/to/overlay/devel/include  -I/opt/ros/indigo/include  -isystem /path/to/overlay/devel/include  -o CMakeFiles/foo.dir/foo.cpp.o -c /home/jbohren/scratch/isystem/foo.cpp
+```
